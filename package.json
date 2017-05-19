@@ -1,0 +1,14 @@
+{
+  "name": "alura-gulp",
+  "version": "1.0.0",
+  "description": "Treinamento de Gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bernardo",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
