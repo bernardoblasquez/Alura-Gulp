@@ -38,7 +38,10 @@ var imagemin = require('gulp-imagemin'),
 /* CONCAT: concatena arquivos: css e js
 --------------------------------------------------------------------*/
     gulp.task('concat-js', function() {
-        gulp.src('dist/**/*.js')
+
+        //abaixo é passado vários scripts em ordem, pois aqui a ordem é importante
+
+        gulp.src(['dist/src/js/jquery.js','dist/src/js/home.js','dist/src/js/produtos.js'])
             .pipe(concat('allScripts.js'))
             .pipe(gulp.dest('dist/src/js'))
     });
