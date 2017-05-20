@@ -8,9 +8,14 @@ var imagemin = require('gulp-imagemin'),
     concat = require('gulp-concat');
 
 
+gulp.task('default', ['copy'], function(){
+    gulp.start('minifica-img', 'concat-js', 'replace-html');
+    //todos executados de forma assíncrona
+})
+
 /* BUILD: minifica arquivos de imagem
 --------------------------------------------------------------------*/
-    gulp.task('minifica-img', ['copy'], function(){
+    gulp.task('minifica-img', function(){
 
         gulp.src('projeto/src/img/**/*')
             .pipe(imagemin())
@@ -52,7 +57,7 @@ var imagemin = require('gulp-imagemin'),
     gulp.task('replace-html', function(){
         gulp.src('dist/**/*.html')
             .pipe(htmlReplace({
-                js:'js/allScrips.js'
+                js:'js/allScripts.js'
             }))
             .pipe(gulp.dest('dist'))
     });
