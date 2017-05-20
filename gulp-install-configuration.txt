@@ -1,0 +1,26 @@
+baixar e instalar node (versão par)
+- https://nodejs.org/en/
+
+na pasta do projeto digitar
+- npm init
+
+instalação do Gulp
+- npm install gulp@3.9.0 --save-dev (versão 3.9.0)
+
+
+
+
+**** Instalação em outra plataforma ou computador ****
+- realizar os procedimentos acima
+- digitar npm install
+
+
+
+
+*********************
+para rodar o gulp na página sem ter que instala-lo globalmente, basta alterar 
+o arquivo package.json
+- em "scrips" cria uma linha com: "gulp":"gulp"
+-- uma task chamanda gulp (o primeiro) roda o gulp
+-- poderia ser "taskrunner":"gulp" : uma task chamanda taskrunner roda o gulp.
+
