@@ -4,7 +4,7 @@ body {
 }
 h1 {
   background-image: url(../img/sobre-background.jpg);
-    padding: 10px;
+  padding: 10px;
 }
 figure {
   background: #F2EDED;
@@ -16,7 +16,7 @@ figcaption {
 }
 h2 {
   border-bottom: 2px solid #333333;
-    margin-top: 2em;
+  margin-top: 2em;
 }
 h3 {
   background: #dcdcf5;
@@ -31,7 +31,6 @@ body {
   margin-right: auto;
   width: 940px;
 }
-
 p {
   padding: 0 3em;
   text-indent: 1em;
