@@ -10,6 +10,10 @@ var imagemin = require('gulp-imagemin'),
     uglify = require('gulp-uglify'),
     cssmin = require('gulp-cssmin');
 
+var browserSync = require('browser-sync'),
+    jsHint = require('gulp-jshint'),
+    jsHintStylish = require('jshint-stylish');
+
 
 gulp.task('default', ['copy'], function(){
     gulp.start('minifica-img', 'usemin');
@@ -58,6 +62,26 @@ gulp.task('default', ['copy'], function(){
             }))
             .pipe(gulp.dest('dist'))
     })
+
+
+/* BROWSER-SYNC: atualização automática do navegador
+------------------------------------------------------------------------------------*/
+gulp.task('server', function(){
+
+    browserSync.init({
+        server:{
+            baseDir:'projeto/src'
+        }
+    });
+
+    gulp.watch('projeto/**/*').on('change', browserSync.reload);
+
+    gulp.watch('projeto/src/js/*.js').on('change', function(event){
+        gulp.src(event.path)
+            .pipe(jsHint())
+            .pipe(jsHint.reporter(jsHintStylish));
+    })
+});
 
 // Formato da configuração de uma task
 gulp.task('nomeDaTarefa', function() {
