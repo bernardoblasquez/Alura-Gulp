@@ -12,8 +12,9 @@ var imagemin = require('gulp-imagemin'),
 
 var browserSync = require('browser-sync'),
     jsHint = require('gulp-jshint'),
-    jsHintStylish = require('jshint-stylish');
+    jsHintStylish = require('jshint-stylish'),
     cssLint = require('gulp-csslint')
+    autoPrefixer = require('gulp-autoprefixer');
 
 
 gulp.task('default', ['copy'], function(){
@@ -59,14 +60,17 @@ gulp.task('default', ['copy'], function(){
         gulp.src('dist/src/**/*.html')
             .pipe(usemin({
                 'js':[uglify],
-                'css':[cssmin]
+                'css':[autoPrefixer,cssmin]
             }))
-            .pipe(gulp.dest('dist'))
+            .pipe(gulp.dest('dist/src'))
     })
 
 
 /* BROWSER-SYNC: atualização automática do navegador
 ------------------------------------------------------------------------------------*/
+// CSSLINT:
+// JSHINT com JSHINT-STYLISH:
+
 gulp.task('server', function(){
 
     browserSync.init({
