@@ -13,6 +13,7 @@ var imagemin = require('gulp-imagemin'),
 var browserSync = require('browser-sync'),
     jsHint = require('gulp-jshint'),
     jsHintStylish = require('jshint-stylish');
+    cssLint = require('gulp-csslint')
 
 
 gulp.task('default', ['copy'], function(){
@@ -81,6 +82,13 @@ gulp.task('server', function(){
             .pipe(jsHint())
             .pipe(jsHint.reporter(jsHintStylish));
     })
+
+    gulp.watch('projeto/src/css/*.css').on('change', function(event){
+        gulp.src(event.path)
+            .pipe(cssLint())
+            .pipe(cssLint.reporter());
+    })
+
 });
 
 // Formato da configuração de uma task
