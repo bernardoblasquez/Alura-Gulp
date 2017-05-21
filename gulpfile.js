@@ -13,8 +13,9 @@ var imagemin = require('gulp-imagemin'),
 var browserSync = require('browser-sync'),
     jsHint = require('gulp-jshint'),
     jsHintStylish = require('jshint-stylish'),
-    cssLint = require('gulp-csslint')
-    autoPrefixer = require('gulp-autoprefixer');
+    cssLint = require('gulp-csslint'),
+    autoPrefixer = require('gulp-autoprefixer'),
+    less = require('gulp-less');
 
 
 gulp.task('default', ['copy'], function(){
@@ -92,6 +93,15 @@ gulp.task('server', function(){
             .pipe(cssLint())
             .pipe(cssLint.reporter());
     })
+
+    gulp.watch('projeto/src/less/**/*.less').on('change', function(event) {
+       var stream = gulp.src(event.path)
+            .pipe(less().on('error', function(erro) {
+              console.log('LESS, erro compilação: ' + erro.filename);
+              console.log(erro.message);
+            }))
+            .pipe(gulp.dest('projeto/src/css'));
+    });
 
 });
 
