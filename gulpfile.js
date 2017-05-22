@@ -15,7 +15,10 @@ var browserSync = require('browser-sync'),
     jsHintStylish = require('jshint-stylish'),
     cssLint = require('gulp-csslint'),
     autoPrefixer = require('gulp-autoprefixer'),
-    less = require('gulp-less');
+    less = require('gulp-less'),
+    sass = require('gulp-sass');
+
+var plumber = require('gulp-plumber');
 
 
 gulp.task('default', ['copy'], function(){
@@ -103,10 +106,14 @@ gulp.task('server', function(){
             .pipe(gulp.dest('projeto/src/css'));
     });
 
+    gulp.watch('projeto/src/scss/**/*.scss').on('change', function(event) {
+        console.log("!!!!!")
+        gulp.src(event.path)
+            .pipe(plumber())
+            .pipe(sass())
+            .pipe(gulp.dest('projeto/src/css/teste'));
+    });
+
 });
 
-// Formato da configuração de uma task
-gulp.task('nomeDaTarefa', function() {
-    // código da sua tarefa aqui
-    // -- pipe() - liga fluxos de dados
-});
+
